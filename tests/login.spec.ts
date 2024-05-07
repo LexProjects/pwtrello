@@ -17,7 +17,7 @@ test("Login to trello using correct credentials", async ({page}) => {
     await page.locator('#login-submit').click();
     await expect(page).toHaveTitle(/Boards | Trello/)
     await page.getByTestId('header-member-menu-button').click();
-    await expect(page.getByTestId('account-menu-account-section')).toContainText('lextestprojects@gmail.com')
+    await expect(page.getByTestId('account-menu-account-section')).toContainText('lextestprojects@gmail.com');
 })
 
 test("Login to trello using incorrect email", async ({page}) => {
@@ -44,7 +44,7 @@ test("Login to trello using invalid email", async ({page}) => {
     //     expect(alert.type()).toContain("alert")
     //     expect(alert.message()).toContain("2Gebruik een '@' in het e-mailadres. In 'lextestprojects' ontbreekt een'@'.")
     // })
-    await expect (page.getByTestId('password')).toBeHidden()
+    await expect (page.getByTestId('password')).toBeHidden();
 })
 
 test("Login to trello using incorrect password", async ({page}) => {
@@ -59,4 +59,3 @@ test("Login to trello using incorrect password", async ({page}) => {
     await page.locator('#login-submit').click();
     await expect (page.getByTestId('form-error--content')).toHaveText('Incorrect email address and / or password. If you recently migrated your Trello account to an Atlassian account, you will need to use your Atlassian account password. Alternatively, you can get help logging in.');
 })
-
