@@ -1,4 +1,4 @@
-import { test } from './fixtures/basePage';
+import { test } from '../fixtures/basePage'
 import { expect } from '@playwright/test';
 
 test("Open homepage and verify title", async ({ page }) => {
