@@ -19,4 +19,20 @@ export default class BoardsPage {
         await this.BoardsActions.clickAccountMenu();
         await expect(this.accountInfoSection()).toContainText(email);
     }
+
+    public async createBasicBoard(boardName) {
+        await this.BoardsActions.clickCreateBoardTile();
+        await this.BoardsActions.enterBoardTitle(boardName);
+        await this.BoardsActions.submitNewBoard();
+        await this.BoardsActions.assertBoardName(boardName)
+    }
+
+    public async deleteExistingBoard(boardName) {
+        await this.BoardsActions.clickExistingBoard(boardName);
+        await this.BoardsActions.clickBoardMenu(boardName)
+        await this.BoardsActions.clickCloseBoardOption();
+        await this.BoardsActions.clickConfirmClose();
+        await this.BoardsActions.permaDelBoard();
+        await this.BoardsActions.confirmPermaDelBoard();
+    }
 } 
