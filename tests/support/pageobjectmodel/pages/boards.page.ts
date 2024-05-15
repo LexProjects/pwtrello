@@ -27,12 +27,38 @@ export default class BoardsPage {
         await this.BoardsActions.assertBoardName(boardName)
     }
 
-    public async deleteExistingBoard(boardName) {
-        await this.BoardsActions.clickExistingBoard(boardName);
-        await this.BoardsActions.clickBoardMenu(boardName)
+    public async permanentlyDeleteBoard(boardTitle) {
+        // await this.BoardsActions.clickExistingBoard(boardName);
+        await this.BoardsActions.clickBoardButton(boardTitle);
+        await this.BoardsActions.clickBoardMenu(boardTitle);
         await this.BoardsActions.clickCloseBoardOption();
         await this.BoardsActions.clickConfirmClose();
-        await this.BoardsActions.permaDelBoard();
-        await this.BoardsActions.confirmPermaDelBoard();
+        await this.BoardsActions.clickPermanentlyDeleteBoard();
+        await this.BoardsActions.clickConfirmPermaDelete();
     }
+
+
+    public async DeleteBoard(boardTitle) {
+        // await this.BoardsActions.clickExistingBoard(boardName);
+        await this.BoardsActions.clickBoardButton(boardTitle);
+        await this.BoardsActions.clickBoardMenu(boardTitle);
+        await this.BoardsActions.clickCloseBoardOption();
+        await this.BoardsActions.clickConfirmClose();
+    }
+
+    public async reopenDeletedBoard() {
+        await this.BoardsActions.clickReopenClosedBoardBtn();
+        await this.BoardsActions.clickConfirmReopenClosedBoardBtn();
+    }
+
+    //Assertions
+    public async assertBoardName(boardName) {
+        await this.BoardsActions.assertBoardName(boardName);
+    }
+
+    public async assertNoClosedBoards(msg) {
+        await this.BoardsActions.clickViewClosedBoardsButton();
+        await this.BoardsActions.assertNoClosedBoardsMsg(msg);
+    }
+
 } 
